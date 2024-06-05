@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video Thumbnails</title>
+    <style>
+        /* Basic styling for the grid */
+        .thumbnail-grid {
+            display: flex;
+            flex-wrap: wrap;
+        }
+        .thumbnail {
+            width: 200px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .thumbnail img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="thumbnail-grid">
+        <div class="thumbnail" data-video-link="https://mega.nz/file/gxVj0RQR#9T-6KTbJmDx5KYRYb9-EvYE8GJa7z37GcQS9_83YdNo" data-video-type="video/mp4">
+            <img src="./batman.jpg" alt="Video 1">
+            <p>Video Title 1</p>
+        </div>
+        <div class="thumbnail" data-video-link="file_example_MP4_480_1_5MG.mp4" data-video-type="video/webm">
+            <img src="./dr strange.jpg" alt="Video 2">
+            <p>Video Title 2</p>
+        </div>
+        <!-- Add more thumbnails as needed -->
+    </div>
+
+    <script>
+        // Function to handle thumbnail clicks
+        document.querySelectorAll('.thumbnail').forEach(thumbnail => {
+            thumbnail.addEventListener('click', function() {
+                const videoLink = this.getAttribute('data-video-link');
+                const videoType = this.getAttribute('data-video-type');
+                window.location.href = `./video.html?video=${encodeURIComponent(videoLink)}&type=${encodeURIComponent(videoType)}`;
+            });
+        });
+    </script>
+</body>
+</html>
